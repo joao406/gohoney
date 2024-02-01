@@ -4,7 +4,7 @@ Welcome to the Goney project! This software has been developed to simulate vulne
 
 # Prerequisites
 
-Make sure you have the Go environment properly set up on your machine before getting started. You can <a href="https://go.dev" target="_blank">download</a> and install Go from the official website.
+Make sure you have the Go environment properly set up on your machine before getting started. You can <a target="_blank" href="https://go.dev" >download</a> and install Go from the official website.
 
 # Installation
 

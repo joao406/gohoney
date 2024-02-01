@@ -21,7 +21,7 @@ func GenerateRelatory(r *http.Request) (*relatoryPage, error) {
 		Time:      time.Now().Format("2006-01-02 15:04:05"),
 		IPAddr:    r.RemoteAddr,
 		UserAgent: r.Header.Get("User-Agent"),
-		URLPath:   r.URL.Path
+		URLPath:   r.URL.Path,
 	}
 
 	fileName := fmt.Sprintf("./html/relatory_%s.html", time.Now().Format("2006-01-02"))	

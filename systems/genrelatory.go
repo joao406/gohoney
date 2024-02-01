@@ -16,6 +16,8 @@ type relatoryPage struct {
 	IPAddr    string
 	UserAgent string
 	URLPath   string
+	FormUser  string
+	FormPass  string
 }
 
 func GenerateRelatory(r *http.Request) (*relatoryPage, error) {
@@ -24,11 +26,13 @@ func GenerateRelatory(r *http.Request) (*relatoryPage, error) {
 		IPAddr:    r.RemoteAddr,
 		UserAgent: r.Header.Get("User-Agent"),
 		URLPath:   r.URL.Path,
+		FormUser:  r.FormValue("username"),
+		FormPass:  r.FormValue("password"),
 	}
 
 	RelatoryStore = append(RelatoryStore, relatory)
 
-	fileName := fmt.Sprintf("./html/relatory_%s.html", time.Now().Format("2006-01-02"))	
+	fileName := fmt.Sprintf("./html/report_%s.html", time.Now().Format("2006-01-02"))	
 
 	file, err := os.Create(fileName)
 	if err != nil {
@@ -41,6 +45,7 @@ func GenerateRelatory(r *http.Request) (*relatoryPage, error) {
 <html>
 <head>
     <title>Reports</title>
+    <meta charset="UTF-8">
 </head>
 <body>
     <h1>Reports</h1>
@@ -49,6 +54,12 @@ func GenerateRelatory(r *http.Request) (*relatoryPage, error) {
     <p>IP Address: {{.IPAddr}}</p>
     <p>User-Agent: {{.UserAgent}}</p>
     <p>Path: {{.URLPath}}</p>
+    <code>
+    	<pre>
+FormUser: {{.FormUser}}
+FormPass: {{.FormPass}}
+    	</pre>
+    </code>
     <br>
     {{end}}
 </body>

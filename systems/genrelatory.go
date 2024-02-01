@@ -6,6 +6,7 @@ import (
 	"os"
 	"time"
 	"log"
+	"fmt"
 )
 
 
@@ -24,7 +25,7 @@ func GenerateRelatory(r *http.Request) (*relatoryPage, error) {
 
 	fileName := fmt.Sprintf("relatory_%s.html", time.Now().Format("2006-01-02"))	
 
-	file, err := os.Create(filename)
+	file, err := os.Create(fileName)
 	if err != nil {
 		log.Fatal(err)
 	}

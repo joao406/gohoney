@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-type relatoryPage {
+type relatoryPage struct {
 	Time      string
 	IPAddr    string
 	UserAgent string

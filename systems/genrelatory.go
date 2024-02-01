@@ -18,10 +18,6 @@ type relatoryPage struct {
 	URLPath   string
 }
 
-type templateContext struct {
-	Relatories []*relatoryPage
-}
-
 func GenerateRelatory(r *http.Request) (*relatoryPage, error) {
 	relatory := &relatoryPage{
 		Time:      time.Now().Format("2006-01-02 15:04:05"),
@@ -39,10 +35,6 @@ func GenerateRelatory(r *http.Request) (*relatoryPage, error) {
 		log.Fatal(err)
 	}
 	defer file.Close()
-
-	context := &templateContext{
-		Relatories: RelatoryStore,
-	}
 	
 	tmpl := template.Must(template.New("relatorypage").Parse(`
 <!DOCTYPE html>
@@ -63,11 +55,10 @@ func GenerateRelatory(r *http.Request) (*relatoryPage, error) {
 </html>
 `))
 
-	err = tmpl.Execute(file, context)
+	err = tmpl.Execute(file, RelatoryStore)
 	if err != nil {
 		return nil, err
 	}
 
 	return relatory, nil
 }
-

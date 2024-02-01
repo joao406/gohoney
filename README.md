@@ -21,6 +21,8 @@ cd goney && go mod tidy && go build
 ./goney -h
 ```
 
+The generated reports are saved in <b>html/report_DATE.html</b>
+
 # Demo
 
 ![demo](https://github.com/joao406/goney/assets/145498965/1db320b8-3482-44eb-a4e7-f93d18a35b9d)

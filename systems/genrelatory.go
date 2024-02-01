@@ -9,14 +9,14 @@ import (
 	"fmt"
 )
 
+var RelatoryStore []*relatoryPage
+
 type relatoryPage struct {
 	Time      string
 	IPAddr    string
 	UserAgent string
 	URLPath   string
 }
-
-var RelatoryStore []*relatoryPage
 
 func GenerateRelatory(r *http.Request) (*relatoryPage, error) {
 	relatory := &relatoryPage{

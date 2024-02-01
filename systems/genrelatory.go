@@ -63,7 +63,7 @@ func GenerateRelatory(r *http.Request) (*relatoryPage, error) {
 </html>
 `))
 
-	err = tmpl.Execute(file, relatory)
+	err = tmpl.Execute(file, context)
 	if err != nil {
 		return nil, err
 	}
